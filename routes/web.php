@@ -11,6 +11,9 @@
 |
 */
 
+
 $router->get('/', function () use ($router) {
-    return view('index');;
+    return view('index');
 });
+
+$router->post('/post', 'AppController@post');
