@@ -13,21 +13,20 @@ class AppController extends Controller
       return "hoge";
   }
 
-  public function post($request)
+  public function post(Request $request)
   {
-    
-    if(isset($request['name']) && isset($request['text'])){
+    if ($request['name'] && $request['text']) {
     $name = $request['name'];
     $text = $request['text'];
     $str = "AJAX REQUEST SUCCESS\nname:".$name."\ntext:".$text."\n";
     $result = nl2br($str);
     return $result;
-
   }else{
     return 'FAIL TO AJAX REQUEST';
   }
 
   }
+
   public function update()
   {
       //$companies = \DB::table('companies')->get();
