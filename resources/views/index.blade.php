@@ -4,22 +4,23 @@
   <title>nijitter</title>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="">
-</head>
-<body>
-  <div class='title'>
-    <h1>NIJITTER</h1>
-  </div>
-  <div class='a'>
-    <form method="post" accept-charset="utf-8" return false>
-      <input type="text" id="name" name="name">
-      <textarea id="text" name="text"></textarea>
-    </form>
-
-    <input type="button" id="ajax" value="送信">
-  </div>
-    <div class="result"></div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script type="text/javascript">
+
+
+         function test(){
+           return $.ajax({
+             url: './get',
+             type: 'GET'
+           })
+         }
+             test().done(function(result) {
+               $('.posts').html(result);
+              }).fail(function(result) {
+                  console.log(result);
+              });
+
+
 
        $(function(){
            $('#ajax').on('click',function(){
@@ -49,6 +50,20 @@
        });
 
    </script>
+</head>
+<body>
+  <div class='title'>
+    <h1>NIJITTER</h1>
+  </div>
+  <div class='form'>
+    <form id="form" method="post" accept-charset="utf-8" return false>
+      <input type="text" id="name" name="name"><br>
+      <textarea id="text" name="text"></textarea>
+    </form>
 
+    <input type="button" id="ajax" value="送信">
+  </div>
+  <div class="result"></div>
+  <div class="posts"></div>
 </body>
 </html>
