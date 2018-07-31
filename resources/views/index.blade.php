@@ -7,6 +7,21 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script type="text/javascript">
 
+
+         function test(){
+           return $.ajax({
+             url: './get',
+             type: 'GET'
+           })
+         }
+             test().done(function(result) {
+               $('.posts').html(result);
+              }).fail(function(result) {
+                  console.log(result);
+              });
+
+
+
        $(function(){
            $('#ajax').on('click',function(){
                $.ajax({
@@ -48,6 +63,7 @@
 
     <input type="button" id="ajax" value="送信">
   </div>
-    <div class="result"></div>
+  <div class="result"></div>
+  <div class="posts"></div>
 </body>
 </html>

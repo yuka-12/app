@@ -17,3 +17,4 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('/post', 'AppController@post');
+$router->get('/get', 'AppController@get');
