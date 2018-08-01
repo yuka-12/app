@@ -8,62 +8,62 @@
   <script type="text/javascript">
 
 
-         function test(){
-           return $.ajax({
-             url: './get',
-             type: 'GET'
-           })
-         }
-             test().done(function(result) {
-               $('.posts').html(result);
-              }).fail(function(result) {
-                  console.log(result);
-              });
+      function test(){
+          return $.ajax({
+              url: './get',
+              type: 'GET'
+          })
+      }
+      test().done(function(result) {
+          $('.posts').html(result);
+      }).fail(function(result) {
+          console.log(result);
+      });
 
 
 
-       $(function(){
-           $('#ajax').on('click',function(){
-               $.ajax({
-                   url:'./post',
-                   type:'POST',
-                   data:{
-                       'name':$('#name').val(),
-                       'text':$('#text').val()
-                   }
-               })
-               // Ajaxリクエストが成功した時発動
-               .done( (data) => {
-                   $('.result').html(data);
-                   console.log(data);
-               })
-               // Ajaxリクエストが失敗した時発動
-               .fail( (data) => {
-                   $('.result').html(data);
-                   console.log(data);
-               })
-               // Ajaxリクエストが成功・失敗どちらでも発動
-               .always( (data) => {
+      $(function(){
+          $('#ajax').on('click',function(){
+              $.ajax({
+                  url:'./post',
+                  type:'POST',
+                  data:{
+                      'name':$('#name').val(),
+                      'text':$('#text').val()
+                  }
+              })
+              // Ajaxリクエストが成功した時発動
+                  .done( (data) => {
+                      $('.result').html(data);
+                      console.log(data);
+                  })
+                  // Ajaxリクエストが失敗した時発動
+                  .fail( (data) => {
+                      $('.result').html(data);
+                      console.log(data);
+                  })
+                  // Ajaxリクエストが成功・失敗どちらでも発動
+                  .always( (data) => {
 
-               });
-           });
-       });
+                  });
+          });
+      });
 
-   </script>
+  </script>
 </head>
 <body>
-  <div class='title'>
-    <h1>NIJITTER</h1>
-  </div>
-  <div class='form'>
-    <form id="form" method="post" accept-charset="utf-8" return false>
-      <input type="text" id="name" name="name"><br>
-      <textarea id="text" name="text"></textarea>
-    </form>
+<div class='title'>
+  <h1>NIJITTER</h1>
+</div>
+<div class='form'>
+  <form id="form" method="post" accept-charset="utf-8" return false>
+    <input type="text" id="name" name="name"><br>
+    <textarea id="text" name="text"></textarea>
+  </form>
 
-    <input type="button" id="ajax" value="送信">
-  </div>
-  <div class="result"></div>
-  <div class="posts"></div>
+  <input type="button" id="ajax" value="送信">
+</div>
+<div class="result"></div>
+<div class="posts"></div>
 </body>
 </html>
