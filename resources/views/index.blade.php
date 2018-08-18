@@ -10,6 +10,7 @@
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript">
 
+
        function test(){
          return $.ajax({
            url: './get',
@@ -52,18 +53,13 @@
                })
                // Ajaxリクエストが成功した時発動
                .done( (data) => {
-                   $('.result').html(data);
-                   console.log(data);
+                   location.reload();
                })
                // Ajaxリクエストが失敗した時発動
                .fail( (data) => {
                    $('.result').html(data);
                    console.log(data);
                })
-               // Ajaxリクエストが成功・失敗どちらでも発動
-               .always( (data) => {
-
-               });
            });
        });
 
