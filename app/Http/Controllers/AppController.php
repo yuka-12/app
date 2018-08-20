@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Response;
 use App\Http\Requests;
+// use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Post;
+// use Response;
 
 class AppController extends Controller
 {
@@ -38,14 +41,17 @@ class AppController extends Controller
 
   public function update()
   {
+
+    $result = Post::paginate(10);
       //$companies = \DB::table('companies')->get();
       //return view('index')->with('companies',$companies);
-      return "hoge";
+      // $a = new Response();
+      // dd($a);
+      return response()->json($result);
   }
-  public function delete()
+  public function delete(Request $request)
   {
-      //$companies = \DB::table('companies')->get();
-      //return view('index')->with('companies',$companies);
-      return "hoge";
+      Post::where('id',$request->id)->delete();
+      return $request;
   }
 }

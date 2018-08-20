@@ -29,7 +29,10 @@
              $(result).each(function(){
              $(
              '<h6>'+ this.name + '</h6>'+
-             '<span>' + this.text + '</span><br><br>'
+             '<span>' + this.text + '</span><br>' +
+             '<form method="post" action="" accept-charset="utf-8" return false>' +
+             '<input type="button" id="delete-' + this.id + '" class="delete btn btn-primary" name="' + this.id + '" value="削除"></form><br><br>'
+
            ).appendTo('.posts');
            });
 
@@ -61,6 +64,32 @@
                    console.log(data);
                })
            });
+
+           $(document).on('click', '.delete',function(){
+             var deleteConfirm = confirm('削除してよろしいでしょうか？');
+
+             if(deleteConfirm == true) {
+            var deleteId =  $(this).attr("id");
+
+              $.ajax({
+                  url:'./delete',
+                  type:'POST',
+                  data:{
+                      'id':$(this).attr("name")
+                  }
+              }).done( (data) => {
+                console.log(data);
+                location.reload();
+              })
+            } else {
+              (function(e) {
+        e.preventDefault()
+      });
+            }
+          });
+
+
+
        });
 
    </script>
