@@ -15,7 +15,7 @@ class AppController extends Controller
 
   public function get()
   {
-    $result = Post::all();
+    $result = Post::orderBy('id','desc')->get();
     return $result->toArray();
 
   }
