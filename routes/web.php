@@ -17,4 +17,5 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('/post', 'AppController@post');
+$router->post('/delete', 'AppController@delete');
 $router->get('/get', 'AppController@get');
