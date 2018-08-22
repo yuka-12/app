@@ -31,7 +31,8 @@
              '<h6>'+ this.name + '</h6>'+
              '<span>' + this.text + '</span><br>' +
              '<form method="post" action="" accept-charset="utf-8" return false>' +
-             '<input type="button" id="delete-' + this.id + '" class="delete btn btn-primary" name="' + this.id + '" value="削除"></form><br><br>'
+             '<input type="button" id="update-' + this.id + '" class="update btn btn-dark" name="' + this.id + '" value="編集"> ' +
+             '<input type="button" id="delete-' + this.id + '" class="delete btn btn-danger" name="' + this.id + '" value="削除"></form><br><br>'
 
            ).appendTo('.posts');
            });
@@ -88,6 +89,24 @@
             }
           });
 
+           $(document).on('click', '.update',function(){
+
+               location.reload();
+
+
+               // $.ajax({
+                   //     url:'./delete',
+                   //     type:'POST',
+                   //     data:{
+                   //         'id':$(this).attr("name")
+                   //     }
+                   // }).done( (data) => {
+                   //     console.log(data);
+                   //     location.reload();
+                   // })
+           });
+
+
 
 
        });
@@ -110,7 +129,7 @@
       <textarea id="text" class="form-control" name="text"></textarea>
     </div>
     </form>
-    <input type="button" id="ajax" class="btn btn-primary" value="送信">
+    <input type="button" id="ajax" class="btn btn-dark" value="送信">
   </div>
   <br>
   <br>
