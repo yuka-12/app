@@ -27,7 +27,7 @@
              '<h6>'+ this.name + '</h6>'+
              '<span>' + this.text + '</span><br>' +
              '<form method="post" action="" accept-charset="utf-8" return false>' +
-             '<div id="a"><input type="button" class="update-button btn btn-dark" value="編集"> ' +
+             '<div class="rapper-form col-sm-5 center-block"><input type="button" class="update-button btn btn-dark" value="編集"> ' +
              '<input type="button" id="delete-' + this.id + '" class="delete btn btn-danger" name="' + this.id + '" value="削除"><br><br>' +
              '<div class="update-form">' +
              '<label for="name">Name:</label>' +
