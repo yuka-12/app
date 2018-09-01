@@ -16,6 +16,7 @@ $router->get('/', function () use ($router) {
     return view('index');
 });
 
+$router->get('/get', 'AppController@get');
 $router->post('/post', 'AppController@post');
 $router->post('/delete', 'AppController@delete');
-$router->get('/get', 'AppController@get');
+$router->post('/update', 'AppController@update');

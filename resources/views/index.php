@@ -18,31 +18,33 @@
          })
        }
            test().done(function(result) {
-             // console.log(result);
              // HTMLを初期化
              $(".posts").html("");
 
              //HTMLを生成
-             // $.getJSON(result, function(data){
-             //   console.log(data);
-             // for(var index in result){
              $(result).each(function(){
              $(
              '<h6>'+ this.name + '</h6>'+
              '<span>' + this.text + '</span><br>' +
              '<form method="post" action="" accept-charset="utf-8" return false>' +
-             '<input type="button" id="update-' + this.id + '" class="update btn btn-dark" name="' + this.id + '" value="編集"> ' +
-             '<input type="button" id="delete-' + this.id + '" class="delete btn btn-danger" name="' + this.id + '" value="削除"></form><br><br>'
+             '<div id="a"><input type="button" class="update-button btn btn-dark" value="編集"> ' +
+             '<input type="button" id="delete-' + this.id + '" class="delete btn btn-danger" name="' + this.id + '" value="削除"><br><br>' +
+             '<div class="update-form">' +
+             '<label for="name">Name:</label>' +
+             '<input type="text" class="update-name form-control" name="name" value="' + this.name +'"><br>' +
+             '<label for="text">Text:</label>' +
+             '<textarea class="update-text form-control" name="text">' + this.text + '</textarea><br>' +
+             '<input type="button" id="update-' + this.id + '" class="update btn btn-dark" name="' + this.id + '" value="保存">' +
+             '</div></form><br></div>'
 
            ).appendTo('.posts');
            });
 
-             // $('.posts').html(result);
+           $('.update-form').hide();
+
             }).fail(function(result) {
                 console.log(result);
             });
-
-
 
 
        $(function(){
@@ -55,11 +57,9 @@
                        'text':$('#text').val()
                    }
                })
-               // Ajaxリクエストが成功した時発動
                .done( (data) => {
                    location.reload();
                })
-               // Ajaxリクエストが失敗した時発動
                .fail( (data) => {
                    $('.result').html(data);
                    console.log(data);
@@ -79,7 +79,6 @@
                       'id':$(this).attr("name")
                   }
               }).done( (data) => {
-                console.log(data);
                 location.reload();
               })
             } else {
@@ -91,22 +90,25 @@
 
            $(document).on('click', '.update',function(){
 
-               location.reload();
-
-
-               // $.ajax({
-                   //     url:'./delete',
-                   //     type:'POST',
-                   //     data:{
-                   //         'id':$(this).attr("name")
-                   //     }
-                   // }).done( (data) => {
-                   //     console.log(data);
-                   //     location.reload();
-                   // })
+               $.ajax({
+                 url:'./update',
+                 type:'POST',
+                 data:{
+                   'id':$(this).attr("name"),
+                   'name':$(this).parent().find('.update-name').val(),
+                   'text':$(this).parent().find('.update-text').val()
+                 }
+                   }).done( (data) => {
+                       console.log(data);
+                       location.reload();
+                   })
            });
 
-
+           $(document).on('click', '.update-button',function(){
+             $(this).parent().find('.update-form').addClass('open');
+             $('.open').slideToggle(300);
+             $(this).parent().find('.update-form').removeClass('open');
+           });
 
 
        });
@@ -114,10 +116,11 @@
    </script>
 </head>
 <body>
+  <div clas="center-block">
   <div class='title m-3 p-3 text-center'>
     <h1>NIJITTER</h1>
   </div>
-  <div class="container center-block text-center">
+  <div class="container text-center">
   <div class='form col-sm-5 center-block'>
     <form id="form" method="post" accept-charset="utf-8" return false>
     <div class="form-group">
@@ -133,9 +136,8 @@
   </div>
   <br>
   <br>
-  <div class="result"></div>
   <div class="posts"></div>
-
+</div>
 </div>
 </body>
 </html>
