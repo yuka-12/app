@@ -11,6 +11,12 @@
 |
 */
 
+
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return view('index');
 });
+
+$router->get('/get', 'AppController@get');
+$router->post('/post', 'AppController@post');
+$router->post('/delete', 'AppController@delete');
+$router->post('/update', 'AppController@update');
