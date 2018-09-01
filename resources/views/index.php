@@ -18,14 +18,10 @@
          })
        }
            test().done(function(result) {
-             // console.log(result);
              // HTMLを初期化
              $(".posts").html("");
 
              //HTMLを生成
-             // $.getJSON(result, function(data){
-             //   console.log(data);
-             // for(var index in result){
              $(result).each(function(){
              $(
              '<h6>'+ this.name + '</h6>'+
@@ -34,7 +30,6 @@
              '<div id="a"><input type="button" class="update-button btn btn-dark" value="編集"> ' +
              '<input type="button" id="delete-' + this.id + '" class="delete btn btn-danger" name="' + this.id + '" value="削除"><br><br>' +
              '<div class="update-form">' +
-             // '<input type="hidden" name="id-' + this.id + '" value="' + this.id +'"><br>' +
              '<label for="name">Name:</label>' +
              '<input type="text" class="update-name form-control" name="name" value="' + this.name +'"><br>' +
              '<label for="text">Text:</label>' +
@@ -47,12 +42,9 @@
 
            $('.update-form').hide();
 
-             // $('.posts').html(result);
             }).fail(function(result) {
                 console.log(result);
             });
-
-
 
 
        $(function(){
@@ -65,11 +57,9 @@
                        'text':$('#text').val()
                    }
                })
-               // Ajaxリクエストが成功した時発動
                .done( (data) => {
                    location.reload();
                })
-               // Ajaxリクエストが失敗した時発動
                .fail( (data) => {
                    $('.result').html(data);
                    console.log(data);
@@ -146,7 +136,6 @@
   </div>
   <br>
   <br>
-  <div class="result"></div>
   <div class="posts"></div>
 </div>
 </div>

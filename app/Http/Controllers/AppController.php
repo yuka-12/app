@@ -3,20 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Response;
 use App\Http\Requests;
-// use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Post;
-// use Response;
 
 class AppController extends Controller
 {
 
   public function get()
   {
-    $result = Post::orderBy('id','desc')->get();
-    return $result->toArray();
+    $result = Post::orderBy('id','desc')->get()->toArray();
+    return $result;
 
   }
 
@@ -34,7 +31,7 @@ class AppController extends Controller
     return 'success';
 
   }else{
-    return 'FAIL TO AJAX REQUEST';
+    return 'failure';
   }
 
   }
@@ -54,7 +51,7 @@ class AppController extends Controller
     return 'success';
 
   }else{
-    return 'FAIL TO AJAX REQUEST';
+    return 'failure';
   }
 
 
