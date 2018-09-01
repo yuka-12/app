@@ -39,16 +39,27 @@ class AppController extends Controller
 
   }
 
-  public function update()
+  public function update(Request $request)
   {
+    if ($request['id'] && $request['name'] && $request['text']) {
+    $id = $request['id'];
+    $name = $request['name'];
+    $text = $request['text'];
 
-    $result = Post::paginate(10);
-      //$companies = \DB::table('companies')->get();
-      //return view('index')->with('companies',$companies);
-      // $a = new Response();
-      // dd($a);
-      return response()->json($result);
+    $post = Post::where('id', $id)->first();
+    $post->name = $name;
+    $post->text = $text;
+    $post->save();
+
+    return 'success';
+
+  }else{
+    return 'FAIL TO AJAX REQUEST';
   }
+
+
+  }
+
   public function delete(Request $request)
   {
       Post::where('id',$request->id)->delete();
