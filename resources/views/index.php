@@ -30,6 +30,7 @@
     <input type="button" id="ajax" class="btn btn-dark" value="送信">
   </div>
   <br>
+  <div class="result"></div>
   <br>
   <div class="posts"></div>
 </div>

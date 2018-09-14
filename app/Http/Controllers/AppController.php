@@ -30,8 +30,6 @@ class AppController extends Controller
 
     return 'success';
 
-  }else{
-    return 'failure';
   }
 
   }
