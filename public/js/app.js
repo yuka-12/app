@@ -1,11 +1,11 @@
 
-       function test(){
+       function get(){
          return $.ajax({
            url: './get',
            type: 'GET'
          })
        }
-           test().done(function(result) {
+           get().done(function(result) {
              // HTMLを初期化
              $(".posts").html("");
 
