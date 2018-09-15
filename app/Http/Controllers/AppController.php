@@ -28,10 +28,6 @@ class AppController extends Controller
     $post->text = $text;
     $post->save();
 
-    return 'success';
-
-  }else{
-    return 'failure';
   }
 
   }
@@ -48,18 +44,12 @@ class AppController extends Controller
     $post->text = $text;
     $post->save();
 
-    return 'success';
-
-  }else{
-    return 'failure';
   }
-
 
   }
 
   public function delete(Request $request)
   {
       Post::where('id',$request->id)->delete();
-      return $request;
   }
 }
