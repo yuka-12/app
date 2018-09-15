@@ -45,12 +45,8 @@
                        'text':$('#text').val()
                    }
                })
-               .done( (data) => {
+               .done(function(){
                    location.reload();
-               })
-               .fail( (data) => {
-                   $('.result').html(data);
-                   console.log(data);
                })
            });
 
@@ -58,7 +54,6 @@
              var deleteConfirm = confirm('削除してよろしいでしょうか？');
 
              if(deleteConfirm == true) {
-            var deleteId =  $(this).attr("id");
 
               $.ajax({
                   url:'./delete',
@@ -66,7 +61,7 @@
                   data:{
                       'id':$(this).attr("name")
                   }
-              }).done( (data) => {
+              }).done(function(){
                 location.reload();
               })
             } else {
@@ -86,8 +81,7 @@
                    'name':$(this).parent().find('.update-name').val(),
                    'text':$(this).parent().find('.update-text').val()
                  }
-                   }).done( (data) => {
-                       console.log(data);
+                   }).done(function(){
                        location.reload();
                    })
            });
