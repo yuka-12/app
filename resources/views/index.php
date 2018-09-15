@@ -11,12 +11,12 @@
   <script type="text/javascript" src="js/app.js"></script>
 </head>
 <body>
-  <div clas="center-block">
-  <div class='title m-3 p-3 text-center'>
+  <div class="center-block">
+  <div class="title m-3 p-3 text-center">
     <h1>NIJITTER</h1>
   </div>
   <div class="container text-center">
-  <div class='form col-sm-5 center-block'>
+  <div class="form col-sm-5 center-block">
     <form id="form" method="post" accept-charset="utf-8" return false>
     <div class="form-group">
       <label for="name">Name:</label>
