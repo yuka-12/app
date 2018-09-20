@@ -1,11 +1,11 @@
 
-       function test(){
+       function get(){
          return $.ajax({
            url: './get',
            type: 'GET'
          })
        }
-           test().done(function(result) {
+           get().done(function(result) {
              // HTMLを初期化
              $(".posts").html("");
 
@@ -66,9 +66,10 @@
               })
             } else {
               (function(e) {
-        e.preventDefault()
-      });
+                e.preventDefault()
+              });
             }
+
           });
 
            $(document).on('click', '.update',function(){
